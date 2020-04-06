@@ -1472,3 +1472,15 @@ function twoSum(nums, target) {
     })
     return indexArr
 }
+
+// 第三种解法
+// function twoSum(nums, target) {
+//     const Amap = new Map()
+//     for (let i = 0; i < nums.length; i++) {
+//         const key = target - nums[i]
+//         if (Amap.has(key)) {
+//             return [Amap.get(key), i]
+//         }
+//         Amap.set(nums[i], i)
+//     }
+// }
