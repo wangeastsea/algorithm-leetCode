@@ -30,6 +30,7 @@
 //     return ((num - 1) % 9) + 1
 // }
 
+// 暂时没有搞懂，先用递归处理吧
 var addDigits = function (num) {
     if (num % 9 === 0 && num !== 0) {
         return 9
