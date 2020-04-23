@@ -23,7 +23,7 @@ const arr2 = ['H', 'a', 'n', 'n', 'a', 'h']
 //     }
 // }
 
-//2
+// 2
 var reverseString = function (s) {
     let left = 0
     let right = s.length - 1
