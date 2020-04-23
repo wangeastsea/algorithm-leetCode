@@ -26,31 +26,54 @@
 //     return bool
 // }
 
+//  改进版
 var canConstruct = function (ransomNote, magazine) {
     if (ransomNote === '') {
         return true
     }
-    const ransomNoteArr = ransomNote.split('')
     const magazineArr = magazine.split('')
-    const len = ransomNoteArr.length
-    let i = 0
-    while (i < len) {
-        // 判断每一个ransomNote元素是否在magazine中
-        var index = magazineArr.indexOf(ransomNoteArr[i])
-        // 如果在
+    const ransomNoteArr = ransomNote.split('')
+    let bool = true
+    for (let i = 0; i < ransomNoteArr.length; i++) {
+        // 获取在magazineArr的下标
+        const index = magazineArr.indexOf(ransomNoteArr[i])
         if (index > -1) {
-            // 则将其赋值为一个特殊的字符，不局限为0
-            magazineArr[index] = 0
-            i++
-            // 关键点判断，如果是ransomNote i+1 的长度 === len,说明已经比较到了最后一个字符都在magazine中，可以返回true
-            if (i === len) {
-                return true
-            }
+            // 删除magazine的index的元素
+            magazineArr.splice(index, 1)
         } else {
-            return false
+            bool = false
         }
     }
+    return bool
 }
+
+// 思路为: 判断ransomNote的每一个字符是否在magazine中，如果没有就返回false
+// 如果有，就获取在magazine中的位置，并修改为一个特殊的字符，不能是字母，这样的话，就只用了一次，用完就废弃掉。
+// var canConstruct = function (ransomNote, magazine) {
+//     if (ransomNote === '') {
+//         return true
+//     }
+//     const ransomNoteArr = ransomNote.split('')
+//     const magazineArr = magazine.split('')
+//     const len = ransomNoteArr.length
+//     let i = 0
+//     while (i < len) {
+//         // 判断每一个ransomNote元素是否在magazine中
+//         var index = magazineArr.indexOf(ransomNoteArr[i])
+//         // 如果在
+//         if (index > -1) {
+//             // 则将其赋值为一个特殊的字符，不局限为0
+//             magazineArr[index] = 0
+//             i++
+//             // 关键点判断，如果是ransomNote i+1 的长度 === len,说明已经比较到了最后一个字符都在magazine中，可以返回true
+//             if (i === len) {
+//                 return true
+//             }
+//         } else {
+//             return false
+//         }
+//     }
+// }
 
 // var canConstruct = function (ransomNote, magazine) {
 //     if (ransomNote === '') {
@@ -71,6 +94,6 @@ var canConstruct = function (ransomNote, magazine) {
 //     }
 // }
 
-console.log(canConstruct('a', 'b'))
-console.log(canConstruct('aa', 'ab'))
-console.log(canConstruct('aa', 'aab'))
+// console.log(canConstruct('a', 'b'))
+// console.log(canConstruct('aa', 'ab'))
+console.log(canConstruct('fihjjjjei', 'hjibagacbhadfaefdjaeaebgi'))
