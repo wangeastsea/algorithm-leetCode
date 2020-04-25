@@ -7,8 +7,8 @@
 
 // 实现
 function ToLowerCase(value) {
-    let lowerstr = ""
-    const arr = value.split("")
+    let lowerstr = ''
+    const arr = value.split('')
     arr.forEach((item) => {
         // 使用 char.charCodeAt() 拿到字符 char 对应的数值 strNum
         const strNum = item.charCodeAt()
@@ -22,5 +22,5 @@ function ToLowerCase(value) {
     return lowerstr
 }
 
-console.log(ToLowerCase("Where"))
-console.log(ToLowerCase("WHO AM I"))
+console.log(ToLowerCase('Where'))
+console.log(ToLowerCase('WHO AM I'))
