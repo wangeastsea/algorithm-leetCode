@@ -16,22 +16,12 @@
 //     return c
 // }
 
-// 2 match 实现  \w+ 单词字符 ( 字母、数字、下划线)
-// var countSegments = function (s) {
-//     const strArr = s.match(/\w+/g)
-//     let c = 0
-//     for (const e of strArr) {
-//         if (e) c++
-//     }
-//     return c
-// }
-
-// 3 match 实现  \S+ 非空格
+// 2 match 实现  \S+ 非空格
 var countSegments = function (s) {
     const strArr = s.match(/\S+/g)
     return strArr ? strArr.length : 0
 }
 
-// console.log(countSegments('Hello, my name is John'))
+console.log(countSegments("love live! mu'sic forever"))
 // console.log(countSegments(''))
-console.log(countSegments('     '))
+// console.log(countSegments('     '))
