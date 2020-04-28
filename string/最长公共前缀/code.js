@@ -10,11 +10,11 @@ var longestCommonPrefix = function (strs) {
     let pre = ''
     for (let i = 0; i < strs.length; i++) {
         const curS = strs[i]
-        const nextS = strs[i + 1]
         let j = 0
         let z = 0
         // 前2个的比较逻辑
         if (i === 0) {
+            const nextS = strs[i + 1]
             while (j < curS.length) {
                 if (curS[j] === nextS[j]) {
                     pre += curS[j]
@@ -35,6 +35,6 @@ var longestCommonPrefix = function (strs) {
     return pre
 }
 
-// console.log(longestCommonPrefix(['flower', 'flow', 'flewht']))
+console.log(longestCommonPrefix(['flower', 'flow', 'flewht']))
 
-console.log(longestCommonPrefix(['dog', 'racecar', 'car']))
+// console.log(longestCommonPrefix(['dog', 'racecar', 'car']))
