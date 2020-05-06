@@ -95,5 +95,5 @@ var canConstruct = function (ransomNote, magazine) {
 // }
 
 // console.log(canConstruct('a', 'b'))
-// console.log(canConstruct('aa', 'ab'))
-console.log(canConstruct('fihjjjjei', 'hjibagacbhadfaefdjaeaebgi'))
+console.log(canConstruct('ba', 'ab'))
+// console.log(canConstruct('fihjjjjei', 'hjibagacbhadfaefdjaeaebgi'))
