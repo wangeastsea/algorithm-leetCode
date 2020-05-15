@@ -62,4 +62,6 @@ function postorder(root) {
     // 输出当前遍历的结点值
     console.log('当前遍历的结点值是：', root.val)
 }
+console.log(preorder(root))
+console.log(inorder(root))
 console.log(postorder(root))
