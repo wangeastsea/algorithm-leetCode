@@ -49,4 +49,5 @@ var buddyStrings = function (A, B) {
 // console.log(buddyStrings('abcd', 'badc'))
 // console.log(buddyStrings('aa', 'aa'))
 // console.log(buddyStrings('ab', 'ba'))
-console.log(buddyStrings('abab', 'abab'))
+// console.log(buddyStrings('abab', 'abab'))
+console.log(buddyStrings('abcd', 'dcba'))
