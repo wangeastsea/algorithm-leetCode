@@ -15,6 +15,68 @@
 //         }
 //     }
 // }
+
+// 第二种解法
+
+// function twoSum(nums, target) {
+//     let indexArr = []
+//     nums.forEach((item, index) => {
+//         const sNum = target - item
+//         // 说明有匹配的值,但是匹配的值不能是自己 例如 28 中的14
+//         if (nums.includes(sNum)) {
+//             const i = nums.indexOf(sNum)
+//             if (i !== index) {
+//                 indexArr = [i, index]
+//                 return false
+//             }
+//         }
+//     })
+//     return indexArr
+// }
+
+// 第三种解法
+// 几乎所有的求和问题，都可以转换为求差问题。
+// 我们可以在遍历数组的过程中，增加一个 Map 来记录已经遍历过的数字及其对应的索引值。
+// 然后每遍历到一个新数字的时候，都回到 Map 里去查询 targetNum 与该数的差值是否已经在前面的数字中出现过了。
+// 若出现过，那么答案已然显现，我们就不必再往下走了。
+
+// map实现方式
+// function twoSum(nums, target) {
+//     const Amap = new Map()
+//     const len = nums.length
+//     for (let i = 0; i < len; i++) {
+//         const key = target - nums[i]
+//         if (Amap.has(key)) {
+//             return [Amap.get(key), i]
+//         }
+//         Amap.set(nums[i], i)
+//     }
+// }
+
+// Object 的实现方式， 思路与上述一致
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+const twoSum = function (nums, target) {
+    // 这里我用对象来模拟 map 的能力
+    const diffs = {}
+    // 缓存数组长度
+    const len = nums.length
+    // 遍历数组
+    for (let i = 0; i < len; i++) {
+        // 判断当前值对应的 target 差值是否存在（是否已遍历过）
+        if (diffs[target - nums[i]] !== undefined) {
+            // 若有对应差值，那么答案get！
+            return [diffs[target - nums[i]], i]
+        }
+        // 若没有对应差值，则记录当前值
+        diffs[nums[i]] = i
+    }
+}
+
 const nums = [
     876,
     879,
@@ -1454,33 +1516,3 @@ const nums = [
 const target = 28
 
 console.log(twoSum(nums, target))
-
-// 第二种解法
-
-function twoSum(nums, target) {
-    let indexArr = []
-    nums.forEach((item, index) => {
-        const sNum = target - item
-        // 说明有匹配的值,但是匹配的值不能是自己 例如 28 中的14
-        if (nums.includes(sNum)) {
-            const i = nums.indexOf(sNum)
-            if (i !== index) {
-                indexArr = [i, index]
-                return false
-            }
-        }
-    })
-    return indexArr
-}
-
-// 第三种解法
-// function twoSum(nums, target) {
-//     const Amap = new Map()
-//     for (let i = 0; i < nums.length; i++) {
-//         const key = target - nums[i]
-//         if (Amap.has(key)) {
-//             return [Amap.get(key), i]
-//         }
-//         Amap.set(nums[i], i)
-//     }
-// }
