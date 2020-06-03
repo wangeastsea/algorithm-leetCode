@@ -16,6 +16,8 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module'
   },
-  rules: {}
+  rules: {
+    'no-useless-catch': 0
+  }
 }
 
