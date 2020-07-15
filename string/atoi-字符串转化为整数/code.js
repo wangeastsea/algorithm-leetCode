@@ -12,6 +12,7 @@ const myAtoi = function (str) {
     let targetNum = 0
     // 如果匹配成功
     if (groups) {
+        console.log('groups==>', groups)
         // 尝试转化捕获到的结构
         targetNum = +groups[1]
         // 注意，即便成功，也可能出现非数字的情况，比如单一个'+'
