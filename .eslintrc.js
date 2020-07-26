@@ -17,7 +17,8 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    'no-useless-catch': 0
+    'no-useless-catch': 0,
+    "prettier/prettier": "off"
   }
 }
 
