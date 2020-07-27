@@ -18,7 +18,7 @@ module.exports = {
   },
   rules: {
     'no-useless-catch': 0,
-    "prettier/prettier": "off"
+    // "prettier/prettier": "off"
   }
 }
 

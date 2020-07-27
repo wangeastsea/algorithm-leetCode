@@ -1,41 +1,33 @@
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+
 const maxSlidingWindow = function (nums, k) {
     // 缓存数组的长度
-    const len = nums.length;
-    // 定义结果数组
-    const res = [];
-    // 初始化左指针
-    let left = 0;
-    // 初始化右指针
-    let right = k - 1;
-    // 当数组没有被遍历完时，执行循环体内的逻辑
-    while (right < len) {
-      // 计算当前窗口内的最大值
-      const max = calMax(nums, left, right);
-      // 将最大值推入结果数组
-      res.push(max);
-      // 左指针前进一步
-      left++;
-      // 右指针前进一步
-      right++;
+    const len = nums.length
+    // 初始化结果数组
+    const res = []
+    // 初始化双端队列
+    const deque = []
+    for (let i = 0; i < len; i++) {
+        // 当队尾元素小于当前元素时
+        while (deque.length && nums[deque[deque.length - 1]] < nums[i]) {
+            // 将队尾元素（索引）不断出队，直至队尾元素大于等于当前元素
+            deque.pop()
+        }
+        deque.push(i)
+        // 当队头元素的索引已经被排除在滑动窗口之外时
+        while (deque.length && deque[0] <= i - k) {
+            // 将队头元素索引出队
+            deque.shift()
+        }
+        // 判断滑动窗口的状态，只有在被遍历的元素个数大于 k 的时候，才更新结果数组
+        if (i >= k - 1) {
+            res.push(nums[deque[0]])
+        }
     }
     // 返回结果数组
-    return res;
-  };
-  
-  // 这个函数用来计算最大值
-  function calMax(arr, left, right) {
-    // 处理数组为空的边界情况
-    if (!arr || !arr.length) {
-      return;
-    }
-    // 初始化 maxNum 的值为窗口内第一个元素
-    let maxNum = arr[left];
-    // 遍历窗口内所有元素，更新 maxNum 的值
-    for (let i = left; i <= right; i++) {
-      if (arr[i] > maxNum) {
-        maxNum = arr[i];
-      }
-    }
-    // 返回最大值
-    return maxNum;
-  }
+    return res
+}
