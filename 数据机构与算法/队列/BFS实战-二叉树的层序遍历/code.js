@@ -23,6 +23,7 @@ function BFS(root) {
     queue.push(root)
     // 队列不为空，说明没有遍历完全
     while (queue.length) {
+        console.log(queue)
         // 取出队头元素
         const top = queue[0]
         // 访问 top
@@ -39,3 +40,5 @@ function BFS(root) {
         queue.shift()
     }
 }
+
+console.log(BFS(root))
