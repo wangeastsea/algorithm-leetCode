@@ -16,8 +16,13 @@
 //     }
 // }
 
-// 第二种解法
-
+// 第二种解法  如果用语言描述不清楚，那就是不理解其思想，尝试着反思思路
+/**
+ *
+ * @param {*} nums
+ * @param {*} target
+ *
+ */
 // function twoSum(nums, target) {
 //     let indexArr = []
 //     nums.forEach((item, index) => {
@@ -26,7 +31,7 @@
 //         if (nums.includes(sNum)) {
 //             const i = nums.indexOf(sNum)
 //             if (i !== index) {
-//                 indexArr = [i, index]
+//                 indexArr = [index, i]
 //                 return false
 //             }
 //         }
@@ -77,18 +82,18 @@
 //     }
 // }
 
-function twoSum(nums, target) {
-    const map = new Map()
-    let index = []
-    nums.forEach((item, i) => {
-        const val = target - item
-        if (map.has(val)) {
-            index = [map.get(val), i]
-        }
-        map.set(item, i)
-    })
-    return index
-}
+// function twoSum(nums, target) {
+//     const map = new Map()
+//     let index = []
+//     nums.forEach((item, i) => {
+//         const val = target - item
+//         if (map.has(val)) {
+//             index = [map.get(val), i]
+//         }
+//         map.set(item, i)
+//     })
+//     return index
+// }
 
 const nums = [
     876,
