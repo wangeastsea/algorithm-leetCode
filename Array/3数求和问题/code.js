@@ -3,13 +3,16 @@
  * @return {number[][]}
  */
 
-// TODO 好思路， 需要仔细反复咀嚼
+// TODO 好思路， 需要仔细反复咀嚼,前提一定时有序数组
+/**
+ *
+ * @param {*} nums
+ */
 const threeSum = function (nums) {
     // 用于存放结果数组
     const res = []
-    // 目标值为0
-    const sum = 0
     // 给 nums 排序
+    // 使用双指针数组必须有序，升序排布
     nums = nums.sort((a, b) => {
         return a - b
     })
@@ -21,7 +24,7 @@ const threeSum = function (nums) {
         let j = i + 1
         // 右指针k
         let k = len - 1
-        // 如果遇到重复的数字，则跳过
+        // 如果遇到重复的数字，则跳过，避免重复计算
         if (i > 0 && nums[i] === nums[i - 1]) {
             continue
         }
