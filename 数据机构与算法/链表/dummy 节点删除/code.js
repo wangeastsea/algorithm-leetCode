@@ -15,10 +15,10 @@ const deleteDuplicates = function (head) {
     // 当 cur 的后面有至少两个结点时
     while (cur.next && cur.next.next) {
         // 对 cur 后面的两个结点进行比较
-        if (cur.next.val === cur.next.next.val) {
-            const val = cur.next.val
+        if (cur.next.value === cur.next.next.value) {
+            const value = cur.next.value
             // 反复地排查后面的元素是否存在多次重复该值的情况
-            while (cur.next && cur.next.val === val) {
+            while (cur.next && cur.next.value === value) {
                 cur.next = cur.next.next
             }
         } else {
@@ -46,4 +46,4 @@ const nodeList = {
         },
     },
 }
-deleteDuplicates(nodeList)
+console.log(deleteDuplicates(nodeList))
