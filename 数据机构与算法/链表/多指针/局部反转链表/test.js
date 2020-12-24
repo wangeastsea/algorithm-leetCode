@@ -1,15 +1,8 @@
-/**
- * @param {ListNode} head
- * @param {number} m
- * @param {number} n
- * @return {ListNode}
- */
 function ListNode(val) {
     this.val = val
     this.next = null
 }
-// 入参是头结点、m、n
-const listNode = {
+const nodeList = {
     val: 1,
     next: {
         val: 2,
@@ -25,31 +18,28 @@ const listNode = {
         },
     },
 }
-
-const reverseBetween = function (head, m, n) {
-    let pre, cur
+function reverseBetween(head, m, n) {
+    let pre, cur, next
     const dummy = new ListNode()
     dummy.next = head
     let p = dummy
-    for (let i = 0; i < m - 1; i++) {
+    for (let i = 1; i < m; i++) {
         p = p.next
     }
-    // 缓存这个前驱结点到 leftHead 里
     const leftHead = p
     const start = leftHead.next
     pre = start
     cur = pre.next
+    // 交换2次
     for (let i = m; i < n; i++) {
-        const next = cur.next
+        next = cur.next
         cur.next = pre
         pre = cur
         cur = next
     }
-    //  leftHead 的后继结点此时为反转后的区间的第一个结点
-    leftHead.next = pre
-    // 将区间内反转后的最后一个结点 next 指向 cur
     start.next = cur
+    leftHead.next = pre
     return dummy.next
 }
 
-reverseBetween(listNode, 3, 4)
+console.log(reverseBetween(nodeList, 2, 4))

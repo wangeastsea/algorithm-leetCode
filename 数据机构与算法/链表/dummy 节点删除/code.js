@@ -23,6 +23,7 @@ const deleteDuplicates = function (head) {
             }
         } else {
             // cur 一直在游走于整个链表
+            // cur 被重新赋值
             cur = cur.next
         }
     }

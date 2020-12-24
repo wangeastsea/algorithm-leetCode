@@ -1,7 +1,3 @@
-function ListNode(val) {
-    this.val = val
-    this.next = null
-}
 const nodeList = {
     val: 1,
     next: {
@@ -18,29 +14,28 @@ const nodeList = {
         },
     },
 }
-const removeNthFromEnd = function (head, n) {
-    // 初始化 dummy 结点
-    const dummy = new ListNode()
-    dummy.next = head
-    // 初始化快慢指针，均指向dummy
-    let fast = dummy
+function NodeList(val) {
+    this.val = val
+    this.next = null
+}
+function removeNthFromEnd(nodeList, n) {
+    const dummy = new NodeList()
+    dummy.next = nodeList
     let slow = dummy
-
-    // 快指针闷头走 n 步
-    while (n !== 0) {
+    let fast = dummy
+    // 快指针到指定位置
+    while (n) {
         fast = fast.next
-        n--
+        --n
     }
-
-    // 快慢指针一起走
+    // 快指针和慢指针同时向后移动，直到快指针到末尾
     while (fast.next) {
         fast = fast.next
         slow = slow.next
     }
-    // 慢指针删除自己的后继结点
+    // 做删除操作
     slow.next = slow.next.next
-    // 返回头结点
-    return dummy.next
+    return nodeList
 }
 
 console.log('removeNthFromEnd', removeNthFromEnd(nodeList, 2))
