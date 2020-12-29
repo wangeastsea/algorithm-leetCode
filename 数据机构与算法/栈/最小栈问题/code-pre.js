@@ -19,6 +19,7 @@ const MinStack = function () {
 
 MinStack.prototype.push = function (x) {
     this.stack.push(x)
+    // 维护一个递减栈，比我小，就可以入栈
     if (this.stack2.length === 0 || this.stack2[this.stack2.length - 1] >= x) {
         this.stack2.push(x)
     }
@@ -29,7 +30,7 @@ MinStack.prototype.push = function (x) {
  */
 MinStack.prototype.pop = function (x) {
     // 若出栈的值和当前最小值相等，那么辅助栈也要对栈顶元素进行出栈，确保最小值的有效性
-    if (this.stack.pop() === this.stack2[this.stack3.length - 1]) {
+    if (this.stack.pop() === this.stack2[this.stack2.length - 1]) {
         this.stack2.pop()
     }
 }
