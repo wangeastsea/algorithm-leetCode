@@ -1,12 +1,32 @@
 // TODO 还是没有搞懂，搞不懂怎么
+// 输入: [1,2,3]
+// 输出: [
+// [1,2,3],
+// [1,3,2],
+// [2,1,3],
+// [2,3,1],
+// [3,1,2],
+// [3,2,1]
+// ]
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+// 入参是一个数组
 const permute = function (nums) {
+    // 缓存数组的长度
     const len = nums.length
+    // curr 变量用来记录当前的排列内容
     const curr = []
+    // res 用来记录所有的排列顺序
     const res = []
+    // visited 用来避免重复使用同一个数字
     const visited = {}
+    // 定义 dfs 函数，入参是坑位的索引（从 0 计数）
     function dfs(nth) {
+        // 若遍历到了不存在的坑位（第 len+1 个），则触碰递归边界返回
         if (nth === len) {
-            // slice() 方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的浅拷贝（包括 begin，不包括end）。原始数组不会被改变。
+            // 此时前 len 个坑位已经填满，将对应的排列记录下来
             res.push(curr.slice())
             return
         }
@@ -31,3 +51,5 @@ const permute = function (nums) {
     dfs(0)
     return res
 }
+const arr = permute([1, 2, 3])
+console.log('arr==>', arr)
