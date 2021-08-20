@@ -1,3 +1,4 @@
+let count = 0
 const root = {
     val: 'A',
     left: {
@@ -21,11 +22,14 @@ const root = {
 function preorder(root) {
     // 递归边界，root 为空
     if (!root) {
+        count--
+        print(count, '退出当前递归')
         return
     }
-
+    count++
+    print(count, root.val)
     // 输出当前遍历的结点值
-    console.log('当前遍历的结点值是：', root.val)
+    // console.log('当前遍历的结点值是：', root.val)
     // 递归遍历左子树
     preorder(root.left)
     // 递归遍历右子树
@@ -63,5 +67,13 @@ function postorder(root) {
     console.log('当前遍历的结点值是：', root.val)
 }
 console.log(preorder(root))
-console.log(inorder(root))
-console.log(postorder(root))
+// console.log(inorder(root))
+// console.log(postorder(root))
+
+function print(count, desc) {
+    let str = ''
+    for (let i = 0; i < count; i++) {
+        str = str + '-'
+    }
+    console.log(`${str}${desc}`)
+}
