@@ -3,23 +3,27 @@ const leftToRight = {
     '[': ']',
     '{': '}',
 }
-
-const str = '()[]{1'
-function isValid(str) {
-    const len = str.length
+const isValid = function (s) {
+    if (!s) return true
     const stack = []
-    for (let i = 0; i < len; i++) {
-        const ch = str[i]
-        if (['[', '(', '{'].includes(ch)) {
-            stack.push(leftToRight[ch])
+    for (let i = 0; i < s.length; i++) {
+        const cur = s[i]
+        if (['(', '[', '{'].includes(cur)) {
+            stack.push(leftToRight[cur])
         } else {
-            if (ch !== stack.pop()) {
+            // const stackTop = stack[stack.length - 1]
+            // if (stackTop !== s[i]) {
+            //     return false
+            // } else {
+            //     stack.pop()
+            // }
+            // 这里的思路好好斟酌下。
+            if (!stack.length || stack.pop() !== cur) {
                 return false
             }
         }
     }
-    // 如果全部匹配完毕，栈应该是空的
     return !stack.length
 }
 
-console.log(isValid(str))
+console.log(isValid('()[]{}'))
