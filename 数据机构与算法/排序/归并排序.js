@@ -1,71 +1,39 @@
-const arr = [11, 8, 3, 9, 7, 1, 2, 5, 90]
-
-// 主要思想是二分发
 function mergeSort(arr) {
-    const len = arr.length - 1
-    const temp = []
-    mergeFn(arr, temp, 0, len)
-}
-function mergeFn(arr, temp, start, end) {
-    if (start < end) {
-        const mid = Math.floor((start + end) / 2)
-        mergeFn(arr, temp, start, mid)
-        mergeFn(arr, temp, mid + 1, end)
-        mergeHandle(arr, temp, start, mid, end)
+    const len = arr.length
+    if (arr.length <= 1) {
+        return arr
     }
+    const mid = Math.floor(len / 2)
+    const leftArr = mergeSort(arr.slice(0, mid))
+    const rightArr = mergeSort(arr.slice(mid, len))
+    arr = merge(leftArr, rightArr)
+    return arr
 }
-function mergeHandle(arr, temp, left, mid, right) {
-    let p1 = left
-    let p2 = mid + 1
-    let k = left
-    while ((p1 <= mid) & (p2 <= mid)) {
-        if (arr[p1] <= arr[p2]) {
-            temp[k++] = arr[p1++]
+
+function merge(arr1, arr2) {
+    let i = 0
+    let j = 0
+    const res = []
+    const len1 = arr1.length
+    const len2 = arr2.length
+    while (i < len1 && j < len2) {
+        if (arr1[i] < arr2[j]) {
+            res.push(arr1[i])
+            i++
         } else {
-            temp[k++] = arr[p2++]
+            res.push(arr2[j])
+            j++
         }
     }
-    while (p1 <= mid) {
-        temp[k++] = arr[p1++]
-    }
-    while (p2 <= right) {
-        temp[k++] = arr[p2++]
-    }
-    for (let i = left; i <= right; i++) {
-        arr[i] = temp[i]
+    if (i < len1) {
+        return res.concat(arr1.slice(i))
+    } else {
+        return res.concat(arr2.slice(j))
     }
 }
+const arr1 = [1, 2, 3]
+const arr2 = [100, 200, 300]
+console.log(merge(arr1, arr2))
 
-mergeSort(arr)
-console.log(arr)
-// 缺点：创建许多额外的内存空间
-// function mergeSort(arr) {
-//     const len = arr.length
-//     if (len < 2) {
-//         return arr
-//     }
-//     const middle = Math.floor(len / 2)
-
-//     const left = arr.slice(0, middle)
-
-//     const right = arr.slice(middle)
-//     count++
-//     printIndent(count, `left ===${left}`, `right === ${right}`)
-//     return merge(mergeSort(left), mergeSort(right))
-// }
-// function merge(left, right) {
-//     const result = []
-//     while (left.length > 0 && right.length > 0) {
-//         if (left[0] <= right[0]) {
-//             result.push(left.shift())
-//         } else {
-//             result.push(right.shift())
-//         }
-//     }
-//     while (left.length) result.push(left.shift())
-//     while (right.length) result.push(right.shift())
-//     printIndent(--count, `result ===${result}`, '-')
-//     return result
-// }
-
-// console.log(mergeSort(arr))
+console.log(mergeSort([4, 3, 2, 1]))
+// O(nlog(n))
